@@ -143,7 +143,7 @@ const newEmployeeDom = function (employee, employees) {
         <form class="assign-pr-form hidden">
           <input type="hidden" name="reviewer" value="${employee._id}" />
           <label for="reviewee">Select the reviewee from the list-></label>
-          <select class="select-options" name="reviewee-id">
+          <select class="select-options" name="reviewee">
             ${employees.map(selectOptionsDom)} 
           </select>
           <button type="submit">Assign PR</button>
