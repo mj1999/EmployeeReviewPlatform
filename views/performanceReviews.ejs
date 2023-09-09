@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="/css/review.css" />
+<div id="root">
+  <div id="reviews-heading">
+    <h1>All Reviews</h1>
+    <p>
+      This page allows you to view all the performance reviews in one page and
+      check their current status and their details.
+    </p>
+  </div>
+  <div id="add-review">
+    <form id="add-review-form">
+      <label for="reviewee">Reviewee</label>
+      <select name="reviewee">
+        <% for(let optemployee of employees){%>
+        <option value="<%=optemployee.id%>"><%= optemployee.name %></option>
+        <%}%>
+      </select>
+      <label for="reviewer">Reviewer</label>
+      <select name="reviewer">
+        <% for(let optemployee of employees){%>
+        <option value="<%=optemployee.id%>"><%= optemployee.name %></option>
+        <%}%>
+      </select>
+      <button type="submit">Add PR</button>
+    </form>
+  </div>
+  <div id="review-display">
+    <div id="pending-reviews-display">
+      <h2 class="text-center">Pending Reviews</h2>
+      <% for(review of reviews){ %> <% if(!review.completed) {%>
+      <div id="<%=review.id%>" class="review-card pending">
+        <div class="reviewee info">
+          <div class="header">Reviewee:-</div>
+          <div class="reviewee-eid">
+            <div class="table-header">EID</div>
+            <div><%=review.reviewee.eid%></div>
+          </div>
+          <div class="reviewee-name">
+            <div class="table-header">NAME:</div>
+            <div><%=review.reviewee.name%></div>
+          </div>
+        </div>
+        <div class="reviewer info">
+          <div class="header">Reviewer:-</div>
+          <div class="reviewee-eid">
+            <div class="table-header">EID</div>
+            <div><%=review.reviewer.eid%></div>
+          </div>
+          <div class="reviewee-name">
+            <div class="table-header">NAME:</div>
+            <div><%=review.reviewer.name%></div>
+          </div>
+        </div>
+      </div>
+      <%}%> <%}%>
+    </div>
+    <div id="completed-reviews-display">
+      <h2 class="text-center">Completed Reviews</h2>
+      <% for(review of reviews){ %> <% if(review.completed) {%>
+      <div id="<%=review.id%>" class="review-card completed">
+        <div class="reviewee info">
+          <div class="header">Reviewee:-</div>
+          <div class="reviewee-eid">
+            <div class="table-header">EID</div>
+            <div><%=review.reviewee.eid%></div>
+          </div>
+          <div class="reviewee-name">
+            <div class="table-header">NAME:</div>
+            <div><%=review.reviewee.name%></div>
+          </div>
+        </div>
+        <div class="reviewer info">
+          <div class="header">Reviewer:-</div>
+          <div class="reviewee-eid">
+            <div class="table-header">EID</div>
+            <div><%=review.reviewer.eid%></div>
+          </div>
+          <div class="reviewee-name">
+            <div class="table-header">NAME:</div>
+            <div><%=review.reviewer.name%></div>
+          </div>
+        </div>
+        <div class="data">
+          <div class="header">Feedback:-</div>
+          <div class="review-rating">
+            <div class="table-header">Rating</div>
+            <div><%=review.rating%></div>
+          </div>
+          <div class="review-comment">
+            <div class="table-header">Comment:</div>
+            <div><p><%=review.comment%></p></div>
+          </div>
+        </div>
+      </div>
+      <%}%> <%}%>
+    </div>
+  </div>
+</div>
+<script src="/js/review.js"></script>

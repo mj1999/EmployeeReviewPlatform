@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/home.css" />
+<div id="root">
+  <h1>Welcome to Employee Review Portal</h1>
+  <% if(!locals.user){ %>
+  <h2 style="color: brown; font-size: 1rem">
+    Please Login or Register to use the app
+  </h2>
+  <% }else{ %>
+  <p>
+    This application provides you a onestop place to manage all your employee
+    reviews and rating and provides employees a platform to give their feedbacks
+    on their peers.
+  </p>
+  <img
+    id="home-illustration"
+    src="https://techcrunch.com/wp-content/uploads/2015/04/feedback.jpg"
+  />
+  <% } %>
+</div>

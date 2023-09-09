@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/employees.css" />
+<div id="root">
+  <div id="employees-heading">
+    <h1>Manage Employees</h1>
+    <p>
+      This page allows you to manage all your employees, change their status and
+      allot them to performance reviews task. Below is the list of all the
+      employees in the database.
+    </p>
+  </div>
+  <div id="add-employee">
+    <form id="add-employee-form">
+      <label for="eid">Employee ID : </label>
+      <input name="eid" placeholder="Numeric Value Only" />
+      <label for="name">Employee Name : </label>
+      <input name="name" placeholder="John Doe" />
+      <label for="eid">Employee Email : </label>
+      <input name="email" placeholder="johndoe@email.com" />
+      <button type="submit">Add Employee :</button>
+    </form>
+  </div>
+  <div id="employees-display">
+    <% for(let employee of employees){%>
+    <div class="employee-card" id="<%=employee.id%>">
+      <div class="empl-id">
+        <div class="header">EID</div>
+        <span class="data"><%= employee.eid %></span>
+      </div>
+      <div class="empl-name">
+        <div class="header">NAME</div>
+        <span class="data"><%= employee.name %></span>
+      </div>
+      <div class="empl-email">
+        <div class="header">EMAIL</div>
+        <span class="data"><%= employee.email %></span>
+      </div>
+      <div class="empl-status">
+        <div class="header">RIGHTS</div>
+        <span class="data"><%= employee.admin?'Admin':'User' %></span>
+      </div>
+      <div class="action-items">
+        <form class="remove-employee-form">
+          <input type="hidden" name="id" value="<%=employee.id%>" />
+          <button type="submit" style="background-color: rgb(189, 78, 78)">
+            Remove
+          </button>
+        </form>
+        <form class="toggle-status-form">
+          <input type="hidden" name="id" value="<%=employee.id%>" />
+          <button type="submit">Toggle-status</button>
+        </form>
+        <button class="assign-pr-button">Assign PR</button>
+        <form class="assign-pr-form hidden">
+          <input type="hidden" name="reviewer" value="<%=employee.id%>" />
+          <label for="reviewee">Select the reviewee from the list-></label>
+          <select name="reviewee">
+            <% for(let optemployee of employees){%> <%
+            if(optemployee!=employee){%>
+            <option value="<%=optemployee.id%>"><%= optemployee.name %></option>
+            <%}%> <%}%>
+          </select>
+          <button type="submit">Assign PR</button>
+        </form>
+      </div>
+    </div>
+    <%}%>
+  </div>
+</div>
+<script src="/js/employees.js"></script>

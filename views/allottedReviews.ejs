@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="/css/review.css" />
+<div id="root">
+  <div id="reviews-heading">
+    <h1>Allotted Reviews</h1>
+    <p>
+      This page allows you to view all the performance reviews allotted to you
+      in one page. You can complete the PRs allotted to you from here and check
+      their current status aswell.
+    </p>
+  </div>
+  <div id="review-display">
+    <div id="pending-reviews-display">
+      <h2 class="text-center">Pending Reviews</h2>
+      <% for(review of reviews){ %> <% if(!review.completed) {%>
+      <div id="review.id" class="review-card pending">
+        <div class="reviewee info">
+          <div class="header">Reviewee:-</div>
+          <div class="reviewee-eid">
+            <div class="table-header">EID</div>
+            <div><%=review.reviewee.eid%></div>
+          </div>
+          <div class="reviewee-name">
+            <div class="table-header">NAME:</div>
+            <div><%=review.reviewee.name%></div>
+          </div>
+        </div>
+        <div class="review-form-display">
+          <form class="review-form" action="/review/update" method="post">
+            <input type="hidden" name="id" value="<%=review.id%>" />
+            <div class="rating-display">
+              <div class="header">Rating: &nbsp;</div>
+              <div class="rating-value">
+                <div><label for="one">1</label></div>
+                <input id="one" name="rating" value="1" type="radio" />
+              </div>
+              <div class="rating-value">
+                <div><label for="two">2</label></div>
+                <input id="two" name="rating" value="2" type="radio" />
+              </div>
+              <div class="rating-value">
+                <div><label for="three">3</label></div>
+                <input
+                  checked
+                  id="three"
+                  name="rating"
+                  value="3"
+                  type="radio"
+                />
+              </div>
+              <div class="rating-value">
+                <div><label for="four">4</label></div>
+                <input id="four" name="rating" value="4" type="radio" />
+              </div>
+              <div class="rating-value">
+                <div><label for="five">5</label></div>
+                <input id="five" name="rating" value="5" type="radio" />
+              </div>
+            </div>
+            <div class="comment-display">
+              <div class="header">Comment: &nbsp;</div>
+              <textarea
+                required
+                name="comment"
+                placeholder="Comment is necessary"
+              ></textarea>
+            </div>
+            <button class="complete-review-button" type="submit">
+              Complete Review
+            </button>
+          </form>
+        </div>
+      </div>
+      <%}%> <%}%>
+    </div>
+    <div id="completed-reviews-display">
+      <h2 class="text-center">Completed Reviews</h2>
+      <% for(review of reviews){ %> <% if(review.completed) {%>
+      <div id="review.id" class="review-card completed">
+        <div class="reviewee info">
+          <div class="header">Reviewee:-</div>
+          <div class="reviewee-eid">
+            <div class="table-header">EID</div>
+            <div><%=review.reviewee.eid%></div>
+          </div>
+          <div class="reviewee-name">
+            <div class="table-header">NAME:</div>
+            <div><%=review.reviewee.name%></div>
+          </div>
+        </div>
+        <div class="reviewer info"></div>
+        <div class="data">
+          <div class="header">Feedback:-</div>
+          <div class="review-rating">
+            <div class="table-header">Rating</div>
+            <div><%=review.rating%></div>
+          </div>
+          <div class="review-comment">
+            <div class="table-header">Comment:</div>
+            <div><p><%=review.comment%></p></div>
+          </div>
+        </div>
+      </div>
+      <%}%> <%}%>
+    </div>
+  </div>
+</div>
