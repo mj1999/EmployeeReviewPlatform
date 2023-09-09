@@ -141,7 +141,7 @@ const newEmployeeDom = function (employee, employees) {
         </form>
         <button class="assign-pr-button">Assign PR</button>
         <form class="assign-pr-form hidden">
-          <input type="hidden" name="reviewer" value="${employee.id}" />
+          <input type="hidden" name="reviewer" value="${employee._id}" />
           <label for="reviewee">Select the reviewee from the list-></label>
           <select class="select-options" name="reviewee-id">
             ${employees.map(selectOptionsDom)} 
@@ -155,7 +155,7 @@ const newEmployeeDom = function (employee, employees) {
 
 const selectOptionsDom = function (employee) {
   return `
-  <option value="${employee.id}">${employee.name}</option>
+  <option value="${employee._id}">${employee.name}</option>
   `;
 };
 
