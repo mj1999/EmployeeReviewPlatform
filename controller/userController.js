@@ -1,5 +1,5 @@
 const User = require("../model/users");
-
+const Reviews = require("../model/reviews.js");
 module.exports.createUser = async function (req, res) {
   try {
     const user = await User.findOne({
@@ -76,10 +76,12 @@ module.exports.toggleStatus = async function (req, res) {
 module.exports.remove = async function (req, res) {
   try {
     const employee = await User.findByIdAndDelete(req.body.id);
+    await Reviews.deleteMany({$or:[{reviewer: req.body.id},{reviewee: req.body.id}]});
     res.status(200).json({
       data: { id: req.body.id },
       message: "Employee removed from the db",
     });
+    
   } catch (err) {
     res.status(500).json({
       message: "Error deleting employee, Internal Server Error",
