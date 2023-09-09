@@ -21,6 +21,8 @@ An application for managing Employee Reviews, assigning new reviews and adding f
     <li>All the database document schemas are under Model folder</li>
     <li>All the html rendering files are under the View folder</li>
     <li>All the server side functions are under Controller folder</li>
+    <li>Asset folder contains static files and client side java script code</li>
+     <li>Config folder contains all the configuration functions, i.e. Database configurations, Authorisation library configurations, etc.</li>
    </ul>
  </p>
 
