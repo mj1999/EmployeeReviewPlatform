@@ -5,10 +5,11 @@ module.exports.createUser = async function (req, res) {
     const user = await User.findOne({
       $or: [{ email: req.body.email }, { eid: req.body.eid }],
     });
-    const employees = await User.find({ _id: { $ne: req.user.id } });
+
     if (!user) {
       const newUser = await User.create(req.body);
       if (req.xhr) {
+        const employees = await User.find({ _id: { $ne: req.user.id } });
         res.status(200).json({
           data: { newUser, employees },
           message: "New employee added , default password is 'password'",
