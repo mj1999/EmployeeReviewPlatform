@@ -16,6 +16,14 @@ An application for managing Employee Reviews, assigning new reviews and adding f
   </ul>
 </p>
 
+<p>The project follows MVC folder structuring, i.e
+   <ul>
+    <li>All the database document schemas are under Model folder</li>
+    <li>All the html rendering files are under the View folder</li>
+    <li>All the server side functions are under Controller folder</li>
+   </ul>
+ </p>
+
 <p>Setting up the project to run locally in your machine:
   <ol>
     <li>Clone the repository files to your desired location on you local machine</li>
