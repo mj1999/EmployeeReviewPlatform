@@ -1,5 +1,6 @@
 # EmployeeReviewPlatform
 An application for managing Employee Reviews, assigning new reviews and adding feedback
+<p>Video demo at : https://drive.google.com/file/d/1USPHiyoirIrWSPsWV3GkbA6QuJHvQhoq/view?usp=sharing</p>
 
 <p>Tech stacks used:
   <ul>
